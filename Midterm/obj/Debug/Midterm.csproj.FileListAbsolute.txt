@@ -1,0 +1,7 @@
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\obj\Debug\Midterm.csprojAssemblyReference.cache
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\obj\Debug\Midterm.csproj.CoreCompileInputs.cache
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\bin\Debug\Midterm.exe.config
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\bin\Debug\Midterm.exe
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\bin\Debug\Midterm.pdb
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\obj\Debug\Midterm.exe
+C:\DotNetBootcamp\GrandCircus\C#.NETbootcamp\DailyLabs\Midterm\Midterm\obj\Debug\Midterm.pdb
