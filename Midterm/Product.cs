@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Midterm
 {
-    class Product
+    class Product : Program
     {
 
         // fields
@@ -25,7 +22,7 @@ namespace Midterm
             get { return name; }
         }
 
-        public string Descriptioin
+        public string Description
         {
             set { description = value; }
             get { return description; }
@@ -52,11 +49,11 @@ namespace Midterm
         // constructor that initialize the class with parameters
         public Product(string nam, string cate, string des, double pri, int quan)
         {
-            name = nam;
-            category = cate;
-            description = des;
-            price = pri;
-            quantity = quan;
+            Name = nam;
+            Category = cate;
+            Description = des;
+            Price = pri;
+            Quantity = quan;
 
         }
         // default constructor
@@ -66,9 +63,9 @@ namespace Midterm
         }
 
         // method
-        public virtual void ListManager()
+        public virtual void PrintList(List<Product> productList)
         {
-            Console.WriteLine($"{Name}\t{Category}\t{Descriptioin}\t{Price:c}\t{Quantity}");
+            Console.WriteLine($"{Name,-30} {Category,-15} {Description,-35} {String.Format($"{Price:c}"),-15} {Quantity}");
 
         }
 
