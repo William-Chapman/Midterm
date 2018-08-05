@@ -33,7 +33,6 @@ namespace Midterm
             #endregion
 
             #region Soda
-
             Product sodaPepsi = new Product("Pepsi", "Soda", "16 oz.", 2.49, 32);
             Product sodaDrPepper = new Product("Dr. Pepper", "Soda", "16 oz.", 2.49, 87);
             Product sodaSprite = new Product("Sprite", "Soda", "16 oz.", 2.49, 64);
@@ -107,10 +106,6 @@ namespace Midterm
 
 
 
-
-
-
-
             // ***OUTPUT***
             string dItem = "Item";
             string dCategory = "Category";
@@ -120,7 +115,6 @@ namespace Midterm
 
             Console.WriteLine($"{dItem,-30} {dCategory,-15} {dDescription,-35} {dPrice,-15} {dQuantity,10}/Box (In Stock)");
             Console.WriteLine("============================================================================================================================\n");
-
             // -------prints productList
             foreach (Product item in productList)
             {
@@ -128,22 +122,23 @@ namespace Midterm
             }
             Console.WriteLine();
 
-            Console.WriteLine("What item would you like to add your cart?");
-            ValidateUserInput();
+            Console.WriteLine("What item would you like to have added to your cart?");
+            string userInput = ValidateUserInput(Console.ReadLine());
+
 
 
 
         }
 
         // ***METHOD***
-        public static void ValidateUserInput()
+        public static string ValidateUserInput(string userInput)
         {
-            string userInput = Console.ReadLine();
 
-            if (!Regex.IsMatch(userInput, @"^[a-zA-z ]{1,20}$"))
+            if (!Regex.IsMatch(userInput, @"^[a-zA-z ]{1,30}$"))
             {
                 throw new Exception("Invalid input. Please try again");
             }
+            return userInput;
         }
 
 
