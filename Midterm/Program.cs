@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-
 namespace Midterm
 {
     class Program
@@ -9,7 +8,9 @@ namespace Midterm
         static void Main(string[] args)
         {
 
+
             List<Product> productList = new List<Product>(); // Makes Product List
+            List<Product> cartList = new List<Product>(); // Makes Cart List
 
             // ***INPUT***
             Console.WriteLine("***Welcome to BDW\'s Marketplace***\n");
@@ -34,23 +35,23 @@ namespace Midterm
 
             #region Soda
             Product sodaPepsi = new Product("Pepsi", "Soda", "16 oz.", 2.49, 32);
-            Product sodaDrPepper = new Product("Dr. Pepper", "Soda", "16 oz.", 2.49, 87);
+            Product sodaMountainDew = new Product("Mountain Dew", "Soda", "16 oz.", 2.49, 87);
             Product sodaSprite = new Product("Sprite", "Soda", "16 oz.", 2.49, 64);
             Product sodaCoke = new Product("Coke", "Soda", "16 oz.", 2.49, 98);
             #endregion
 
             #region Diet Soda
             Product sodaDietPepsi = new Product("Diet Pepsi", "Diet Soda", "16 oz.", 2.49, 53);
-            Product sodaDietDrPepper = new Product("Diet Dr.Pepper", "Diet Soda", "16 oz.", 2.49, 61);
+            Product sodaDietMountainDew = new Product("Diet Mountain Dew", "Diet Soda", "16 oz.", 2.49, 61);
             Product sodaDietSprite = new Product("Diet Sprite", "Diet Soda", "16 oz.", 2.49, 24);
             Product sodaDietCoke = new Product("Diet Coke", "Diet Soda", "16 oz.", 2.49, 68);
             #endregion
 
             #region Frozen Food
-            Product frozen1 = new Product("Frozon Corn", "Frozen Food", "16 oz.", 2.49, 45);
-            Product frozen2 = new Product("Frozon Mixed Vegetables", "Frozen Food", "16 oz.", 2.49, 40);
-            Product frozen3 = new Product("Frozon Broccoli", "Frozen Food", "16 oz.", 2.49, 70);
-            Product frozen4 = new Product("Frozon Green Beans", "Frozen Food", "16 oz.", 2.49, 79);
+            Product frozen1 = new Product("Frozen Corn", "Frozen Food", "16 oz.", 2.49, 45);
+            Product frozen2 = new Product("Frozen Mixed Vegetables", "Frozen Food", "16 oz.", 2.49, 40);
+            Product frozen3 = new Product("Frozen Broccoli", "Frozen Food", "16 oz.", 2.49, 70);
+            Product frozen4 = new Product("Frozen Green Beans", "Frozen Food", "16 oz.", 2.49, 79);
             #endregion
 
             #region Dessert
@@ -79,14 +80,14 @@ namespace Midterm
             #region Add Soda
             productList.Add(sodaCoke);
             productList.Add(sodaPepsi);
-            productList.Add(sodaDrPepper);
+            productList.Add(sodaMountainDew);
             productList.Add(sodaSprite);
             #endregion
 
             #region Add Diet Soda
             productList.Add(sodaDietPepsi);
             productList.Add(sodaDietCoke);
-            productList.Add(sodaDietDrPepper);
+            productList.Add(sodaDietMountainDew);
             productList.Add(sodaDietSprite);
             #endregion
 
@@ -115,29 +116,75 @@ namespace Midterm
 
             Console.WriteLine($"{dItem,-30} {dCategory,-15} {dDescription,-35} {dPrice,-15} {dQuantity,10}/Box (In Stock)");
             Console.WriteLine("============================================================================================================================\n");
-            // -------prints productList
+
+            PrintList(productList); // -------prints productList
+            AddToCart(productList, cartList); // ------adds user selection to cart
+
+        }
+
+        private static void AddToCart(List<Product> productList, List<Product> cartList)
+        {
+            bool repeat = true;
+            while (repeat)
+            {
+
+                Console.WriteLine("\nWhat item would you like to have added to your cart?");
+                string userInput = ValidateUserInput(Console.ReadLine());
+
+                foreach (Product item in productList)
+                {
+
+                    if (userInput.ToLower() == item.Name.ToLower())
+                    {
+                        Console.WriteLine($"\nYou've selected {item.Name}, it will be added to your cart.");
+                        cartList.Add(item);
+
+                        Console.WriteLine("\nWould you like to add another item to your cart? (enter y or n)");
+                        string userResponse = Console.ReadLine().ToLower();
+
+                        if (userResponse == "y" || userResponse == "yes")
+                        {
+                            repeat = true;
+                        }
+                        else if (userResponse == "n" || userResponse == "no")
+                        {
+                            repeat = false;
+                            Console.WriteLine("\nCurrently you have these items in your cart: ");
+
+                            foreach (Product cart in cartList)  // foreach (Product e in carList)
+                            {
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
+                            }
+
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Input not valid. Please try again.");
+                            repeat = true;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private static void PrintList(List<Product> productList)
+        {
             foreach (Product item in productList)
             {
                 item.PrintList(productList);
             }
-            Console.WriteLine();
-
-            Console.WriteLine("What item would you like to have added to your cart?");
-            string userInput = ValidateUserInput(Console.ReadLine());
-
-
-
-
         }
 
-        // ***METHOD***
         public static string ValidateUserInput(string userInput)
         {
-
+            // Validates userInput
             if (!Regex.IsMatch(userInput, @"^[a-zA-z ]{1,30}$"))
             {
                 throw new Exception("Invalid input. Please try again");
             }
+
             return userInput;
         }
 
