@@ -217,6 +217,11 @@ namespace Midterm
                                
                             }
                             wr.Close();
+                            StreamReader reader = new StreamReader("../../data.txt");
+
+                            string filedata = reader.ReadToEnd();
+                            Console.WriteLine(filedata);
+
                             break;
                             
                         }
