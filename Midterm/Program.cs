@@ -120,7 +120,7 @@ namespace Midterm
 
             PrintList(productList); // -------prints productList
             AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price
-
+            Payment.ValidatePaymentType();
 
 
 
