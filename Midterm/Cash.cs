@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Midterm
 {
-    class Cash : Payment
+    class Cash
     {
         public double Change { set; get; }
         public double AmountGiven { set; get; }
 
         public double GetChange(double grandTotal)
         {
-            return (grandTotal - AmountGiven) * -1;
+            return grandTotal - AmountGiven;
         }
     }
 }
