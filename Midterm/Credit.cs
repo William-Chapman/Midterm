@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Midterm
 {
-    class Credit
+    class Credit : Payment
     {
         public string CardNum { set; get; }
         public string ExpDate { set; get; }
