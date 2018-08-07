@@ -149,12 +149,15 @@ namespace Midterm
 
                         if (userResponse == "y" || userResponse == "yes")
                         {
+                            PrintList(productList);
                             repeat = true;
+
                         }
                         else if (userResponse == "n" || userResponse == "no")
                         {
                             repeat = false;
-                            Console.WriteLine("\nCurrently you have these items in your cart: ");
+                            Console.WriteLine("\nCurrently you have these items in your cart: \n");
+                            Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
