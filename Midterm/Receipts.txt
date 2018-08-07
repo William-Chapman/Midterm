@@ -1,0 +1,41 @@
+Bacon $4.99
+Subtotal:$4.99
+Sales Tax:$0.30
+Grand Total:$5.29
+Amount Given:$10.00
+Change:$4.71
+===============
+Bacon $4.99
+Coke $2.49
+Subtotal:$7.48
+Sales Tax:$0.45
+Grand Total:$7.93
+Amount Given:$15.00
+Change:$7.07
+===============
+Bacon $4.99
+Coke $2.49
+Bacon $4.99
+Subtotal:$12.47
+Sales Tax:$0.75
+Grand Total:$13.22
+Amount Given:$20.00
+Change:$6.78
+===============
+Bacon $4.99
+Coke $2.49
+Bacon $4.99
+Subtotal:$12.47
+Sales Tax:$0.75
+Grand Total:$13.22
+Amount Given:$20.00
+Change:$6.78
+===============
+Bacon $4.99
+Coke $2.49
+Subtotal:$7.48
+Sales Tax:$0.45
+Grand Total:$7.93
+Amount Given:$50.00
+Change:$42.07
+===============

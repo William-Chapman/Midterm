@@ -197,6 +197,8 @@ namespace Midterm
                     if (userInput.ToLower() == item.Name.ToLower())
                     {
                         Console.WriteLine($"\nYou've selected {item.Name}, it will be added to your cart.");
+                        Console.WriteLine($"How many {item.Name} would you like to add to your cart?");
+                        item.Quantity = Int32.Parse(Console.ReadLine());
                         cartList.Add(item);
 
                         Console.WriteLine("\nWould you like to add another item to your cart? (enter y or n)");

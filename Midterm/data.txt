@@ -1,2 +1,7 @@
+Bacon                          $4.99
 Coke                           $2.49
+<<<<<<< HEAD
 Pepsi                          $2.49
+=======
+Bacon                          $4.99
+>>>>>>> receipt file
