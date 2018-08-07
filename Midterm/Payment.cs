@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace Midterm
@@ -41,11 +38,11 @@ namespace Midterm
         {
             bool valid = false;
 
-           
+
             do
             {
                 //ask how they will be paying and gather response in the userPayment string
-                Console.WriteLine("How will you be paying today? Cash, check or credit?");
+                Console.WriteLine("\nHow will you be paying today? Cash, check or credit?");
                 string userPayment = Console.ReadLine();
 
                 if (userPayment.ToLower() == "cash" || userPayment.ToLower() == "check" || userPayment.ToLower() == "credit")
@@ -89,7 +86,7 @@ namespace Midterm
             Cash payment = new Cash();
 
             do
-            { 
+            {
                 //gather the amount they are paying with in amount
                 Console.WriteLine("Please enter the amount you are paying with.");
                 amount = Console.ReadLine();
@@ -119,7 +116,7 @@ namespace Midterm
             bool valid = true;
 
             Check payment = new Check();
-            
+
             do
             {
                 //Ask how much the check is for and store it in amount

@@ -65,7 +65,7 @@ namespace Midterm
         // method
         public virtual void PrintList(List<Product> productList)
         {
-            Console.WriteLine($"{Name,-30} {Category,-15} {Description,-35} {String.Format($"{Price:c}"),-15} {Quantity}");
+            Console.WriteLine($"{Name,-30} {Category,-15} {Description,-35} {String.Format($"{Price:c}"),-15} {Quantity, 15}");
 
         }
 

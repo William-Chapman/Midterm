@@ -121,7 +121,7 @@ namespace Midterm
 
             PrintList(productList); // -------prints productList
             AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price
-            Payment.ValidatePaymentType();
+            Payment.ValidatePaymentType(); // ----Validates payment type
 
 
 
@@ -160,13 +160,12 @@ namespace Midterm
                             Console.WriteLine("\nCurrently you have these items in your cart: \n");
                             Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
-                             StreamWriter wr = new StreamWriter("../../data.txt", false);
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
-                                wr.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
-                               
+                                
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
                             }
-                            wr.Close();
+
                             break;
                             
                         }
