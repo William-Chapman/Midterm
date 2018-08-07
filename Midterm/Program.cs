@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
 namespace Midterm
 {
@@ -120,12 +119,62 @@ namespace Midterm
             Console.WriteLine("============================================================================================================================\n");
 
             PrintList(productList); // -------prints productList
-            AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price
-            Payment.ValidatePaymentType();
+            AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price\
 
+            
+            bool valid = false;
+            do
+            {
+                //ask how they will be paying and gather response in the userPayment string
+                Console.WriteLine("How will you be paying today? Cash, check or credit?");
+                string userPayment = Console.ReadLine();
 
-
-
+                if (userPayment.ToLower() == "cash")
+                {
+                    Cash userCash = new Cash();
+                    foreach (Product item in cartList)
+                    {
+                        double sub = userCash.CalculateSuTo(1, item.Price);
+                        double tax = userCash.CalculateTax(sub);
+                        double grand = userCash.CalculateGT(sub, tax);
+                    }
+                    userCash = userCash.TakeCash(userCash);
+                    userCash.DisplayReceipt(cartList, userCash);
+                    valid = true;
+                }
+                else if (userPayment.ToLower() == "check")
+                {
+                    Check userCheck = new Check();
+                    foreach (Product item in cartList)
+                    {
+                        double sub = userCheck.CalculateSuTo(1, item.Price);
+                        double tax = userCheck.CalculateTax(sub);
+                        double grand = userCheck.CalculateGT(sub, tax);
+                    }
+                    userCheck = userCheck.TakeCheck(userCheck);
+                    userCheck.DisplayReceipt(cartList, userCheck);
+                    valid = true;
+                }
+                else if (userPayment.ToLower() == "credit")
+                {
+                    Credit userCredit = new Credit();
+                    foreach (Product item in cartList)
+                    {
+                        double sub = userCredit.CalculateSuTo(1, item.Price);
+                        double tax = userCredit.CalculateTax(sub);
+                        double grand = userCredit.CalculateGT(sub, tax);
+                    }
+                    userCredit = userCredit.TakeCredit(userCredit);
+                    userCredit.DisplayReceipt(cartList, userCredit);
+                    valid = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid response.");
+                    valid = false;
+                }
+            }
+            while (!valid);
         }
 
         private static void AddToCart(List<Product> productList, List<Product> cartList)
@@ -160,15 +209,12 @@ namespace Midterm
                             Console.WriteLine("\nCurrently you have these items in your cart: \n");
                             Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
-                             StreamWriter wr = new StreamWriter("../../data.txt", false);
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
-                                wr.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
-                               
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
                             }
-                            wr.Close();
+
                             break;
-                            
                         }
                         else
                         {
