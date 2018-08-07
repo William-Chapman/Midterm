@@ -19,7 +19,7 @@ namespace Midterm
         public static string ValidatePaymentType()
         {
             //ask the user how they will be paying
-            Console.WriteLine("How will you be paying today? Cash, Check or Credit?");
+            Console.WriteLine("\nHow will you be paying today? Cash, Check or Credit?");
             string userPayment = Console.ReadLine();
 
             if (userPayment.ToLower() == "cash" || userPayment.ToLower() == "check" || userPayment.ToLower() == "credit")

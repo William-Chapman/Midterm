@@ -84,6 +84,7 @@ namespace Midterm
             productList.Add(sodaSprite);
             #endregion
 
+
             #region Add Diet Soda
             productList.Add(sodaDietPepsi);
             productList.Add(sodaDietCoke);
@@ -118,7 +119,11 @@ namespace Midterm
             Console.WriteLine("============================================================================================================================\n");
 
             PrintList(productList); // -------prints productList
-            AddToCart(productList, cartList); // ------adds user selection to cart
+            AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price
+
+
+
+
 
         }
 
@@ -128,7 +133,7 @@ namespace Midterm
             while (repeat)
             {
 
-                Console.WriteLine("\nWhat item would you like to have added to your cart?");
+                Console.WriteLine("\nWhat item would you like to have added to your cart? (Enter item name)");
                 string userInput = ValidateUserInput(Console.ReadLine());
 
                 foreach (Product item in productList)
