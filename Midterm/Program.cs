@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 namespace Midterm
 {
@@ -159,12 +160,15 @@ namespace Midterm
                             Console.WriteLine("\nCurrently you have these items in your cart: \n");
                             Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
+                             StreamWriter wr = new StreamWriter("../../data.txt", false);
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
-                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
+                                wr.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
+                               
                             }
-
+                            wr.Close();
                             break;
+                            
                         }
                         else
                         {
