@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace Midterm
@@ -15,50 +12,61 @@ namespace Midterm
         public static double GrandTotal { set; get; }
         #endregion
 
+
         #region Methods`
-        public void DisplayReceipt(List<Product> cart, Cash userPayment)
+
+        public static void TotalAmountDue()
         {
-            //for loop to display the items they bought
-            foreach (Product item in cart)
-            {
-                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
-            }
-            //display totals
-            Console.WriteLine($"{SubTotal:c}");
-            Console.WriteLine($"{SalesTax:c}");
-            Console.WriteLine($"{GrandTotal:c}");
-            //display payment option information
-            Console.WriteLine($"{userPayment.AmountGiven:c}");
-            Console.WriteLine($"{userPayment.Change:c}");
+            Console.WriteLine(String.Format($"SubTotal: {SubTotal:c}"), -15);
+            Console.WriteLine($"Sales Tax (6%): {SalesTax:c}");
+            Console.WriteLine($"Grand Total: {GrandTotal:c}");
         }
 
-        public void DisplayReceipt(List<Product> cart, Check userPayment)
+        public void DisplayCheckReceipt(List<Product> cart, Check userPayment)
         {
+            Console.WriteLine("\n\t*****Receipt*****");
+
             //for loop to display the items they bought
             foreach (Product item in cart)
             {
                 Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
             }
             //display totals
-            Console.WriteLine($"{SubTotal:c}");
-            Console.WriteLine($"{SalesTax:c}");
-            Console.WriteLine($"{GrandTotal:c}");
+            TotalAmountDue();
             //display payment option information
-            Console.WriteLine(userPayment.CheckNum);
+            Console.WriteLine($"Check Number: {userPayment.CheckNum}");
             Console.WriteLine($"{userPayment.AmountGiven:c}");
         }
 
-        public void DisplayReceipt(List<Product> cart, Credit userPayment)
+        public void DisplayCashReceipt(List<Product> cart, Cash userPayment)
         {
+            Console.WriteLine("\n\t*****Receipt*****");
+
+            //for loop to display the items they bought
+            foreach (Product item in cart)
+            {
+                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
+            }
+            Console.WriteLine("-------------------------------------------------");
+            //display totals
+            TotalAmountDue();
+            //display payment option information
+            Console.WriteLine("-------------------------------------------------");
+            Console.WriteLine($"Amount Paid: {userPayment.AmountGiven:c}");
+            Console.WriteLine($"Change: {userPayment.Change:c}");
+        }
+
+        public void DisplayCreditReceipt(List<Product> cart, Credit userPayment)
+        {
+            Console.WriteLine("\n*****Receipt*****");
+
             //for loop to display the items they bought
             foreach (Product item in cart)
             {
                 Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
             }
             //display totals
-            Console.WriteLine($"{SubTotal:c}");
-            Console.WriteLine($"{SalesTax:c}");
-            Console.WriteLine($"{GrandTotal:c}");
+            TotalAmountDue();
             //display payment option information
             Console.Write("xxxx-xxxx-xxxx-");
             Console.Write(userPayment.CardNum[userPayment.CardNum.Length - 1]);
@@ -74,7 +82,7 @@ namespace Midterm
             bool valid = true;
 
             do
-            { 
+            {
                 //gather the amount they are paying with in amount
                 Console.WriteLine("Please enter the amount you are paying with.");
                 amount = Console.ReadLine();
@@ -102,7 +110,7 @@ namespace Midterm
             string amount;
             double validAmount;
             bool valid = true;
-            
+
             do
             {
                 //Ask how much the check is for and store it in amount
@@ -216,7 +224,7 @@ namespace Midterm
         public double CalculateSuTo(int quantity, double itemPrice)
         {
             //take the quantity and times it by the item's price, return subtotal
-            double subTotal = quantity * itemPrice; 
+            double subTotal = quantity * itemPrice;
             SubTotal += subTotal;
             return subTotal;
         }

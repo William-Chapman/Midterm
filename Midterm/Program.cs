@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
 namespace Midterm
 {
@@ -14,10 +13,6 @@ namespace Midterm
             List<Product> cartList = new List<Product>(); // Makes Cart List
 
             // ***INPUT***
-            Console.WriteLine("***Welcome to BDW\'s Marketplace***\n");
-
-
-            // ***PROCESSING***
 
             // ProductList   
             #region Produce
@@ -105,29 +100,25 @@ namespace Midterm
             productList.Add(dessert2);
             productList.Add(dessert3);
             productList.Add(dessert4);
-            #endregion 
+            #endregion
 
 
 
             // ***OUTPUT***
-            string dItem = "Item";
-            string dCategory = "Category";
-            string dDescription = "Description";
-            string dPrice = "Price";
-            string dQuantity = "Quantity";
-
-            Console.WriteLine($"{dItem,-30} {dCategory,-15} {dDescription,-35} {dPrice,-15} {dQuantity,10}/Box (In Stock)");
-            Console.WriteLine("============================================================================================================================\n");
-
+            PrintHeader(); // ----------- prints header display
             PrintList(productList); // -------prints productList
-            AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price\
+            AddToCart(productList, cartList); // ------adds user selection to cart & displays current cart items w/price
+            PaymentOptions(cartList); // ---------takes user payment type and prints receipt
 
-            
+        }
+
+        private static void PaymentOptions(List<Product> cartList)
+        {
             bool valid = false;
             do
             {
                 //ask how they will be paying and gather response in the userPayment string
-                Console.WriteLine("How will you be paying today? Cash, check or credit?");
+                Console.Write("\nHow will you be paying today? Cash, Check or Credit? ");
                 string userPayment = Console.ReadLine();
 
                 if (userPayment.ToLower() == "cash")
@@ -140,7 +131,7 @@ namespace Midterm
                         double grand = userCash.CalculateGT(sub, tax);
                     }
                     userCash = userCash.TakeCash(userCash);
-                    userCash.DisplayReceipt(cartList, userCash);
+                    userCash.DisplayCashReceipt(cartList, userCash);
                     valid = true;
                 }
                 else if (userPayment.ToLower() == "check")
@@ -153,7 +144,7 @@ namespace Midterm
                         double grand = userCheck.CalculateGT(sub, tax);
                     }
                     userCheck = userCheck.TakeCheck(userCheck);
-                    userCheck.DisplayReceipt(cartList, userCheck);
+                    userCheck.DisplayCheckReceipt(cartList, userCheck);
                     valid = true;
                 }
                 else if (userPayment.ToLower() == "credit")
@@ -166,7 +157,7 @@ namespace Midterm
                         double grand = userCredit.CalculateGT(sub, tax);
                     }
                     userCredit = userCredit.TakeCredit(userCredit);
-                    userCredit.DisplayReceipt(cartList, userCredit);
+                    userCredit.DisplayCreditReceipt(cartList, userCredit);
                     valid = true;
                 }
                 else
@@ -176,6 +167,19 @@ namespace Midterm
                 }
             }
             while (!valid);
+        }
+
+        private static void PrintHeader()
+        {
+            string dItem = "Item";
+            string dCategory = "Category";
+            string dDescription = "Description";
+            string dPrice = "Price";
+            string dQuantity = "Quantity";
+
+            Console.WriteLine("***Welcome to BDW\'s Marketplace***\n");
+            Console.WriteLine($"{dItem,-30} {dCategory,-15} {dDescription,-35} {dPrice,-15} {dQuantity,10}/Box (In Stock)");
+            Console.WriteLine("============================================================================================================================\n");
         }
 
         private static void AddToCart(List<Product> productList, List<Product> cartList)
@@ -200,25 +204,27 @@ namespace Midterm
 
                         if (userResponse == "y" || userResponse == "yes")
                         {
-                            PrintList(productList);
                             repeat = true;
+                            Console.Clear();
+                            PrintHeader();
+                            PrintList(productList);
+
 
                         }
                         else if (userResponse == "n" || userResponse == "no")
                         {
                             repeat = false;
-                            Console.WriteLine("\nCurrently you have these items in your cart: \n");
+                            Console.Clear();
+                            Console.WriteLine("\nCurrently you have these items in your cart: ");
                             Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
-                             StreamWriter wr = new StreamWriter("../../data.txt", false);
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
-                                wr.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
-                               
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
                             }
-                            wr.Close();
+
                             break;
-                            
+
                         }
                         else
                         {
