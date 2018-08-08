@@ -219,6 +219,7 @@ namespace Midterm
                     Console.WriteLine("Please enter a valid expiration date.");
                     valid = false;
                 }
+
             }
             while (!valid);
 
