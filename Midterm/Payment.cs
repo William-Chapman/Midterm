@@ -13,7 +13,7 @@ namespace Midterm
         #endregion
 
 
-        #region Methods`
+        #region Methods
 
         public static void TotalAmountDue()
         {
