@@ -1,0 +1,24 @@
+Chicken Breast,Poultry,Fresh Chicken Breast,3.99,12
+Bacon,Pork,Applewood,4.99,3
+Beef Tips,Beef,Smoked,5.99,7
+Jumbo Shrimp,Seafood,Large Shrimp,4.99,28
+Rotisserie Chicken,Poultry,(Organic) Rotisserie Chicken,12.99,56
+Pork Chops,Pork,(Organic) Smoked Pork Chops,10.99,38
+Beef Steaks,Beef,(Organic) Baked Beef Steaks,12.99,42
+Shrimp,Seafood,(Organic) Shrimp,6.99,52
+Pepsi,Soda,16 oz.,2.49,32
+Mountain Dew,Soda,16 oz.,2.49,87
+Sprite,Soda,16 oz.,2.49,64
+Coke,Soda,16 oz.,2.49,98
+Diet Pepsi,Diet Soda,16 oz.,2.49,53
+Diet Mountain Dew,Diet Soda,16 oz.,2.49,61
+Diet Sprite,Diet Soda,16 oz.,2.49,24
+Diet Coke,Diet Soda,16 oz.,2.49,68
+Frozen Corn,Frozen Food,16 oz.,2.49,45
+Frozen Mixed Vegetables,Frozen Food,16 oz.,2.49,40
+Frozen Broccoli,Frozen Food,16 oz.,2.49,70
+Frozen Green Beans,Frozen Food,16 oz.,2.49,79
+Oreo Cheesecake,Dessert,Oreo Flavored Cheesecake,8.99,41
+Hot Fudge Sundae,Dessert,Ice Cream w/ Hot Fudge,5.49,56
+Carmel Apple Pie,Dessert,Apple Pie Slice w/ Carmel Syrup,3.49,35
+Ice Cream Sandwich,Dessert,Ice Cream Sandwich,1.49,51

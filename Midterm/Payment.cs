@@ -15,15 +15,7 @@ namespace Midterm
 
 
 
-        #region Methods`
-
-        public static void TotalAmountDue()
-        {
-            Console.WriteLine(String.Format($"SubTotal: {SubTotal:c}"), -15);
-            Console.WriteLine($"Sales Tax (6%): {SalesTax:c}");
-            Console.WriteLine($"Grand Total: {GrandTotal:c}");
-        }
-
+        #region Methods
         public void DisplayCheckReceipt(List<Product> cart, Check userPayment)
         {
             Console.WriteLine("\n\t*****Receipt*****");
@@ -33,18 +25,25 @@ namespace Midterm
             //for loop to display the items they bought
             foreach (Product item in cart)
             {
-                Console.WriteLine($"{item.Name}-----{item.Price:c}-----{item.Quantity}");
-                writer.WriteLine($"{item.Name} {item.Price:c}");
+                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c} x {item.Quantity}"),-15}");
+                writer.WriteLine($"{item.Name} {item.Price:c} {item.Quantity}");
             }
             //display totals
-
             Console.WriteLine($"Subtotal:{SubTotal:c}");
+            writer.WriteLine($"Subtotal:{SubTotal:c}");
             Console.WriteLine($"Sales Tax:{SalesTax:c}");
+            writer.WriteLine($"Sales Tax:{SalesTax:c}");
             Console.WriteLine($"Grand Total:{GrandTotal:c}");
-            //display payment option information
+            writer.WriteLine($"Grand Total:{GrandTotal:c}");
+
             Console.WriteLine("-------------------------------------------------");
+            writer.WriteLine("-------------------------------------------------");
             Console.WriteLine($"Amount Paid: {userPayment.AmountGiven:c}");
+            writer.WriteLine($"Amount Paid: {userPayment.AmountGiven:c}");
             Console.WriteLine($"Check Number: {userPayment.CheckNum}");
+            writer.WriteLine($"Check Number: {userPayment.CheckNum}");
+            writer.WriteLine("===========================================================");
+            writer.Close();
         }
 
         public void DisplayCashReceipt(List<Product> cart, Cash userPayment)
@@ -55,25 +54,23 @@ namespace Midterm
             //for loop to display the items they bought
             foreach (Product item in cart)
             {
-                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
-                writer.WriteLine($"{item.Name} {item.Price:c}");
+                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c} x {item.Quantity}"),-15}");
+                writer.WriteLine($"{item.Name} {item.Price:c} {item.Quantity}");
             }
-            Console.WriteLine("-------------------------------------------------");
-            //display totals
-            //display totals
-
             Console.WriteLine($"Subtotal:{SubTotal:c}");
             writer.WriteLine($"Subtotal:{SubTotal:c}");
             Console.WriteLine($"Sales Tax:{SalesTax:c}");
             writer.WriteLine($"Sales Tax:{SalesTax:c}");
             Console.WriteLine($"Grand Total:{GrandTotal:c}");
             writer.WriteLine($"Grand Total:{GrandTotal:c}");
-            //display payment option information
+
+            Console.WriteLine("-------------------------------------------------");
+            writer.WriteLine("-------------------------------------------------");
             Console.WriteLine($"Amount Given:{userPayment.AmountGiven:c}");
             writer.WriteLine($"Amount Given:{userPayment.AmountGiven:c}");
             Console.WriteLine($"Change:{userPayment.Change:c}");
             writer.WriteLine($"Change:{userPayment.Change:c}");
-            writer.WriteLine("===============");
+            writer.WriteLine("===========================================================");
             writer.Close();
             
         }
@@ -81,24 +78,32 @@ namespace Midterm
         public void DisplayCreditReceipt(List<Product> cart, Credit userPayment)
         {
             Console.WriteLine("\n*****Receipt*****");
+            StreamWriter writer = new StreamWriter("../../Receipts.txt", true);
 
             //for loop to display the items they bought
             foreach (Product item in cart)
             {
-                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c}"),-15}");
+                Console.WriteLine($"{item.Name,-30} {String.Format($"{item.Price:c} x {item.Quantity}"),-15}");
+                writer.WriteLine($"{item.Name} {item.Price:c} {item.Quantity}");
             }
-            //display totals
 
             Console.WriteLine($"Subtotal:{SubTotal:c}");
+            writer.WriteLine($"Subtotal:{SubTotal:c}");
             Console.WriteLine($"Sales Tax:{SalesTax:c}");
+            writer.WriteLine($"Sales Tax:{SalesTax:c}");
             Console.WriteLine($"Grand Total:{GrandTotal:c}");
+            writer.WriteLine($"Grand Total:{GrandTotal:c}");
 
-            //display payment option information
+            Console.WriteLine("-------------------------------------------------");
+            writer.WriteLine("-------------------------------------------------");
             Console.Write("xxxx-xxxx-xxxx-");
             Console.Write(userPayment.CardNum[userPayment.CardNum.Length - 1]);
             Console.Write(userPayment.CardNum[userPayment.CardNum.Length - 2]);
             Console.Write(userPayment.CardNum[userPayment.CardNum.Length - 3]);
             Console.WriteLine(userPayment.CardNum[userPayment.CardNum.Length - 4]);
+            writer.WriteLine(userPayment.CardNum);
+            writer.WriteLine("===========================================================");
+            writer.Close();
         }
 
         public Cash TakeCash(Cash userCash)
