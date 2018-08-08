@@ -154,10 +154,20 @@ namespace Midterm
                             Console.WriteLine("\nCurrently you have these items in your cart: ");
                             Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
 
+                            double subTotal = 0;
+                            
+
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
+                                subTotal += cart.Quantity * cart.Price;
                                 Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Quantity} x {(cart.Price)*(cart.Quantity):c}"));
                             }
+                            double totalTax = subTotal * 0.06d;
+                            double grandTotal = subTotal + totalTax;
+
+                            Console.WriteLine($"Subtotal:{subTotal:c}");
+                            Console.WriteLine($"Sales Tax:{totalTax:c}");
+                            Console.WriteLine($"Grand Total:{grandTotal:c}");
 
                             break;
 
