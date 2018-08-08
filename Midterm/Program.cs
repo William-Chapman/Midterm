@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Midterm
 {
@@ -19,11 +19,11 @@ namespace Midterm
             StreamReader reader = new StreamReader("../../Products.txt", true);
             List<string> stringList = new List<string>();
             string fileData = "";
-            string nextLine = reader.ReadLine(); 
+            string nextLine = reader.ReadLine();
 
             while (nextLine != null)
             {
-                fileData += nextLine + "\n"; 
+                fileData += nextLine + "\n";
                 stringList.Add(nextLine);
                 nextLine = reader.ReadLine();
             }
@@ -131,7 +131,7 @@ namespace Midterm
                     if (userInput.ToLower() == item.Name.ToLower())
                     {
                         Console.WriteLine($"\nYou've selected {item.Name}, it will be added to your cart.");
-                        Console.WriteLine($"How many {item.Name} would you like to add to your cart?");
+                        Console.WriteLine($"How many boxes of {item.Name} would you like to add to your cart?");
                         item.Quantity = Int32.Parse(Console.ReadLine());
                         cartList.Add(item);
 
@@ -152,21 +152,23 @@ namespace Midterm
                             repeat = false;
                             Console.Clear();
                             Console.WriteLine("\nCurrently you have these items in your cart: ");
-                            Console.WriteLine("\n\t***Your Shopping Cart***\n---------------------------------------");
+                            Console.WriteLine("\n\t***Your Shopping Cart***\n-------------------------------------------------");
 
                             double subTotal = 0;
-                            
+
 
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
                                 subTotal += cart.Quantity * cart.Price;
-                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Quantity} x {(cart.Price)*(cart.Quantity):c}"));
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Quantity} x {(cart.Price) * (cart.Quantity):c}"));
                             }
                             double totalTax = subTotal * 0.06d;
                             double grandTotal = subTotal + totalTax;
 
+                            Console.WriteLine("-------------------------------------------------");
                             Console.WriteLine($"Subtotal:{subTotal:c}");
                             Console.WriteLine($"Sales Tax:{totalTax:c}");
+                            Console.WriteLine("-------------------------------------------------");
                             Console.WriteLine($"Grand Total:{grandTotal:c}");
 
                             break;
