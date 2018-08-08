@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.IO;
+
 namespace Midterm
 {
     class Program
@@ -14,95 +16,27 @@ namespace Midterm
 
             // ***INPUT***
 
-            // ProductList   
-            #region Produce
-            Product pChicken = new Product("Chicken Breast", "Poultry", "Fresh Chicken Breast", 3.99, 12);
-            Product pPork = new Product("Bacon", "Pork", "Applewood", 4.99, 3);
-            Product pBeef = new Product("Beef Tips", "Beef", "Smoked", 5.99, 7);
-            Product pShrimp = new Product("Jumbo Shrimp", "Seafood", "Large Shrimp", 4.99, 28);
-            #endregion
+            StreamReader reader = new StreamReader("../../Products.txt", true);
+            List<string> stringList = new List<string>();
+            string fileData = "";
+            string nextLine = reader.ReadLine(); 
 
-            #region Organic Produce
-            Product orgChicken = new Product("Rotisserie Chicken", "Poultry", "(Organic) Roteisserie Chicken", 12.99, 56);
-            Product orgPork = new Product("Pork Chops", "Pork", "(Organic) Smoked Pork Chops", 10.99, 38);
-            Product orgBeef = new Product("Beef Steaks", "Beef", "(Organic) Baked Beef Steaks", 12.99, 42);
-            Product orgShrimp = new Product("Jumbo Shrimp", "Seafood", "(Organic) Large Shrimp", 6.99, 52);
-            #endregion
+            while (nextLine != null)
+            {
+                fileData += nextLine + "\n"; 
+                stringList.Add(nextLine);
+                nextLine = reader.ReadLine();
+            }
 
-            #region Soda
-            Product sodaPepsi = new Product("Pepsi", "Soda", "16 oz.", 2.49, 32);
-            Product sodaMountainDew = new Product("Mountain Dew", "Soda", "16 oz.", 2.49, 87);
-            Product sodaSprite = new Product("Sprite", "Soda", "16 oz.", 2.49, 64);
-            Product sodaCoke = new Product("Coke", "Soda", "16 oz.", 2.49, 98);
-            #endregion
+            foreach (string product in stringList)
+            {
+                string[] info = product.Split(',');
 
-            #region Diet Soda
-            Product sodaDietPepsi = new Product("Diet Pepsi", "Diet Soda", "16 oz.", 2.49, 53);
-            Product sodaDietMountainDew = new Product("Diet Mountain Dew", "Diet Soda", "16 oz.", 2.49, 61);
-            Product sodaDietSprite = new Product("Diet Sprite", "Diet Soda", "16 oz.", 2.49, 24);
-            Product sodaDietCoke = new Product("Diet Coke", "Diet Soda", "16 oz.", 2.49, 68);
-            #endregion
+                Product temp = new Product(info[0], info[1], info[2], double.Parse(info[3]), Int32.Parse(info[4]));
+                productList.Add(temp);
+            }
 
-            #region Frozen Food
-            Product frozen1 = new Product("Frozen Corn", "Frozen Food", "16 oz.", 2.49, 45);
-            Product frozen2 = new Product("Frozen Mixed Vegetables", "Frozen Food", "16 oz.", 2.49, 40);
-            Product frozen3 = new Product("Frozen Broccoli", "Frozen Food", "16 oz.", 2.49, 70);
-            Product frozen4 = new Product("Frozen Green Beans", "Frozen Food", "16 oz.", 2.49, 79);
-            #endregion
-
-            #region Dessert
-            Product dessert1 = new Product("Oreo Cheesecake", "Dessert", "Oreo Flavored Cheesecake", 8.99, 41);
-            Product dessert2 = new Product("Hot Fudge Sunday", "Dessert", "Ice Cream w/ Hot Fudge", 5.49, 56);
-            Product dessert3 = new Product("Carmel Apple Pie", "Dessert", "Apple pie slice w/ carmel syrup", 3.49, 35);
-            Product dessert4 = new Product("Ice Cream Sandwhich Bar", "Dessert", "Ice Sandwhich", 1.49, 51);
-            #endregion
-
-            // add products to list
-
-            #region Add Produce
-            productList.Add(pChicken);
-            productList.Add(pPork);
-            productList.Add(pBeef);
-            productList.Add(pShrimp);
-            #endregion
-
-            #region Add Organic Produce
-            productList.Add(orgChicken);
-            productList.Add(orgBeef);
-            productList.Add(orgPork);
-            productList.Add(orgShrimp);
-            #endregion
-
-            #region Add Soda
-            productList.Add(sodaCoke);
-            productList.Add(sodaPepsi);
-            productList.Add(sodaMountainDew);
-            productList.Add(sodaSprite);
-            #endregion
-
-
-            #region Add Diet Soda
-            productList.Add(sodaDietPepsi);
-            productList.Add(sodaDietCoke);
-            productList.Add(sodaDietMountainDew);
-            productList.Add(sodaDietSprite);
-            #endregion
-
-            #region Add Frozen Food
-            productList.Add(frozen1);
-            productList.Add(frozen2);
-            productList.Add(frozen3);
-            productList.Add(frozen4);
-            #endregion
-
-            #region Add Dessert
-            productList.Add(dessert1);
-            productList.Add(dessert2);
-            productList.Add(dessert3);
-            productList.Add(dessert4);
-            #endregion
-
-
+            reader.Close();
 
             // ***OUTPUT***
             PrintHeader(); // ----------- prints header display
@@ -126,7 +60,7 @@ namespace Midterm
                     Cash userCash = new Cash();
                     foreach (Product item in cartList)
                     {
-                        double sub = userCash.CalculateSuTo(1, item.Price);
+                        double sub = userCash.CalculateSuTo(item.Quantity, item.Price);
                         double tax = userCash.CalculateTax(sub);
                         double grand = userCash.CalculateGT(sub, tax);
                     }
@@ -139,7 +73,7 @@ namespace Midterm
                     Check userCheck = new Check();
                     foreach (Product item in cartList)
                     {
-                        double sub = userCheck.CalculateSuTo(1, item.Price);
+                        double sub = userCheck.CalculateSuTo(item.Quantity, item.Price);
                         double tax = userCheck.CalculateTax(sub);
                         double grand = userCheck.CalculateGT(sub, tax);
                     }
@@ -152,7 +86,7 @@ namespace Midterm
                     Credit userCredit = new Credit();
                     foreach (Product item in cartList)
                     {
-                        double sub = userCredit.CalculateSuTo(1, item.Price);
+                        double sub = userCredit.CalculateSuTo(item.Quantity, item.Price);
                         double tax = userCredit.CalculateTax(sub);
                         double grand = userCredit.CalculateGT(sub, tax);
                     }
@@ -197,6 +131,8 @@ namespace Midterm
                     if (userInput.ToLower() == item.Name.ToLower())
                     {
                         Console.WriteLine($"\nYou've selected {item.Name}, it will be added to your cart.");
+                        Console.WriteLine($"How many {item.Name} would you like to add to your cart?");
+                        item.Quantity = Int32.Parse(Console.ReadLine());
                         cartList.Add(item);
 
                         Console.WriteLine("\nWould you like to add another item to your cart? (enter y or n)");
@@ -220,7 +156,7 @@ namespace Midterm
 
                             foreach (Product cart in cartList)  // foreach (Product e in carList)
                             {
-                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Price:c}"));
+                                Console.WriteLine(String.Format($"{cart.Name,-30} {cart.Quantity} x {(cart.Price)*(cart.Quantity):c}"));
                             }
 
                             break;
