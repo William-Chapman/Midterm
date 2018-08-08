@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Midterm
 {
@@ -18,7 +18,7 @@ namespace Midterm
         #region Methods
         public void DisplayCheckReceipt(List<Product> cart, Check userPayment)
         {
-            StreamWriter writer = new StreamWriter("../../Receipts.txt",true);
+            StreamWriter writer = new StreamWriter("../../Receipts.txt", true);
             Console.WriteLine("\n\t*****Receipt*****");
 
             //for loop to display the items they bought
@@ -30,12 +30,12 @@ namespace Midterm
             //display totals
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");
-            Console.WriteLine($"Subtotal:{SubTotal:c}");
-            writer.WriteLine($"Subtotal:{SubTotal:c}");
-            Console.WriteLine($"Sales Tax:{SalesTax:c}");
-            writer.WriteLine($"Sales Tax:{SalesTax:c}");
-            Console.WriteLine($"Grand Total:{GrandTotal:c}");
-            writer.WriteLine($"Grand Total:{GrandTotal:c}");
+            Console.WriteLine($"Subtotal: {SubTotal:c}");
+            writer.WriteLine($"Subtotal: {SubTotal:c}");
+            Console.WriteLine($"Sales Tax: {SalesTax:c}");
+            writer.WriteLine($"Sales Tax: {SalesTax:c}");
+            Console.WriteLine($"Grand Total: {GrandTotal:c}");
+            writer.WriteLine($"Grand Total: {GrandTotal:c}");
 
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");
@@ -61,22 +61,22 @@ namespace Midterm
             }
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");
-            Console.WriteLine($"Subtotal:{SubTotal:c}");
-            writer.WriteLine($"Subtotal:{SubTotal:c}");
-            Console.WriteLine($"Sales Tax:{SalesTax:c}");
-            writer.WriteLine($"Sales Tax:{SalesTax:c}");
-            Console.WriteLine($"Grand Total:{GrandTotal:c}");
-            writer.WriteLine($"Grand Total:{GrandTotal:c}");
+            Console.WriteLine($"Subtotal: {SubTotal:c}");
+            writer.WriteLine($"Subtotal: {SubTotal:c}");
+            Console.WriteLine($"Sales Tax: {SalesTax:c}");
+            writer.WriteLine($"Sales Tax: {SalesTax:c}");
+            Console.WriteLine($"Grand Total: {GrandTotal:c}");
+            writer.WriteLine($"Grand Total: {GrandTotal:c}");
 
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");
-            Console.WriteLine($"Amount Given:{userPayment.AmountGiven:c}");
-            writer.WriteLine($"Amount Given:{userPayment.AmountGiven:c}");
-            Console.WriteLine($"Change:{userPayment.Change:c}");
-            writer.WriteLine($"Change:{userPayment.Change:c}");
+            Console.WriteLine($"Amount Given: {userPayment.AmountGiven:c}");
+            writer.WriteLine($"Amount Given: {userPayment.AmountGiven:c}");
+            Console.WriteLine($"Change: {userPayment.Change:c}");
+            writer.WriteLine($"Change: {userPayment.Change:c}");
             writer.WriteLine("===========================================================");
             writer.Close();
-            
+
         }
 
         public void DisplayCreditReceipt(List<Product> cart, Credit userPayment)
@@ -93,12 +93,12 @@ namespace Midterm
             }
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");
-            Console.WriteLine($"Subtotal:{SubTotal:c}");
-            writer.WriteLine($"Subtotal:{SubTotal:c}");
-            Console.WriteLine($"Sales Tax:{SalesTax:c}");
-            writer.WriteLine($"Sales Tax:{SalesTax:c}");
-            Console.WriteLine($"Grand Total:{GrandTotal:c}");
-            writer.WriteLine($"Grand Total:{GrandTotal:c}");
+            Console.WriteLine($"Subtotal: {SubTotal:c}");
+            writer.WriteLine($"Subtotal: {SubTotal:c}");
+            Console.WriteLine($"Sales Tax: {SalesTax:c}");
+            writer.WriteLine($"Sales Tax: {SalesTax:c}");
+            Console.WriteLine($"Grand Total: {GrandTotal:c}");
+            writer.WriteLine($"Grand Total: {GrandTotal:c}");
 
             Console.WriteLine("-------------------------------------------------");
             writer.WriteLine("-------------------------------------------------");

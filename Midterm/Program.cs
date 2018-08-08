@@ -166,10 +166,10 @@ namespace Midterm
                             double grandTotal = subTotal + totalTax;
 
                             Console.WriteLine("-------------------------------------------------");
-                            Console.WriteLine($"Subtotal:{subTotal:c}");
-                            Console.WriteLine($"Sales Tax:{totalTax:c}");
+                            Console.WriteLine($"Subtotal: {subTotal:c}");
+                            Console.WriteLine($"Sales Tax: {totalTax:c}");
                             Console.WriteLine("-------------------------------------------------");
-                            Console.WriteLine($"Grand Total:{grandTotal:c}");
+                            Console.WriteLine($"Grand Total: {grandTotal:c}");
 
                             break;
 
